@@ -48,7 +48,7 @@ class Connector:
 
 class ColabCode:
     def __init__(self, port=10000, password=None, mount_drive=False,
-                 option="ngrok", add_extensions=None):
+                 option="localtunnel", add_extensions=None):
         self.port = port
 
         self._install_localtunnel()
