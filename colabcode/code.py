@@ -82,6 +82,7 @@ class ColabCode:
 
     def _install_extensions(self):
         for ext in EXTENSIONS:
+            print(f'Install Extension {ext}')
             subprocess.run(["code-server", "--install-extension", f"{ext}"])
 
     def _start_server(self):
