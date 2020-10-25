@@ -45,12 +45,18 @@ class Connector:
         
 
 class ColabCode:
-    def __init__(self, port=10000, password=None, mount_drive=False,option="localtunnel"):
+    def __init__(self, port=10000, password=None, mount_drive=False, add_extensions=None):
         self.port = port
         self.connection = Connector(self.port,option)
         self.password = password
         self._mount = mount_drive
         self._install_code()
+        self.extensions = EXTENSIONS
+        if add_extensions is not None and add_extensions != []:
+            if isinstance(add_extensions, list) and isinstance(add_extensions[0], str):
+                self.extensions += add_extensions
+            else:
+                raise TypeError("You need to pass a list of string(s) e.g. ['ms-python.python']")
         self._install_extensions()
         self._start_server()
         self.connection.get_url()
