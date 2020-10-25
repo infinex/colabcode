@@ -14,7 +14,7 @@ import sys
 
 
 class Connector:
-    def __init__(self, port):
+    def __init__(self, port,option):
         self.port = port
         self.option = option
         self.connection = None
