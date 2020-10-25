@@ -14,7 +14,7 @@ import sys
 
 
 class Connector:
-    def __init__(self, port, option="ngrok"):
+    def __init__(self, port):
         self.port = port
         self.option = option
         self.connection = None
