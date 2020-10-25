@@ -9,7 +9,7 @@ try:
 except ImportError:
     colab_env = False
 
-EXTENSIONS = ["ms-python.python", "jithurjacob.nbpreviewer"]
+EXTENSIONS = ["ms-python.python", "jithurjacob.nbpreviewer","shan.code-settings-sync"]
 import sys
 
 
