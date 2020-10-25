@@ -45,7 +45,7 @@ class Connector:
         
 
 class ColabCode:
-    def __init__(self, port=10000, password=None, mount_drive=False, add_extensions=None):
+    def __init__(self, port=10000, password=None, mount_drive=False,option="localtunnel", add_extensions=None):
         self.port = port
         self.connection = Connector(self.port,option)
         self.password = password
