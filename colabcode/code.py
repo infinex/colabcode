@@ -48,9 +48,9 @@ class Connector:
 
 class ColabCode:
     def __init__(self, port=10000, password=None, mount_drive=False,
-                 option="localtunnel", add_extensions=None):
+                 option="localtunnel", add_extensions=None,args=''):
         self.port = port
-
+        self.args = args
         self._install_localtunnel()
         print(option)
         self.connection = Connector(self.port, option)
@@ -96,9 +96,9 @@ class ColabCode:
         if self._mount and colab_env:
             drive.mount("/content/drive")
         if self.password:
-            code_cmd = f"PASSWORD={self.password} code-server --port {self.port} --disable-telemetry"
+            code_cmd = f"PASSWORD={self.password} code-server --port {self.port}" + self.args
         else:
-            code_cmd = f"code-server --port {self.port} --auth none"
+            code_cmd = f"code-server --port {self.port} --auth none " + self.args
         with subprocess.Popen(
                 [code_cmd],
                 shell=True,
