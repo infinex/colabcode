@@ -98,7 +98,7 @@ class ColabCode:
         if self.password:
             code_cmd = f"PASSWORD={self.password} code-server --port {self.port} --disable-telemetry"
         else:
-            code_cmd = f"code-server --port {self.port} --auth none --disable-telemetry"
+            code_cmd = f"code-server --port {self.port} --auth none"
         with subprocess.Popen(
                 [code_cmd],
                 shell=True,
