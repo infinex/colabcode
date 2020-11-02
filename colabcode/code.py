@@ -27,7 +27,7 @@ class Connector:
         elif self.option == "localtunnel":
             self.connection = subprocess.Popen(
                 ["lt", "--port 10000 ", f"{self.args}"],
-                                               stdout=subprocess.PIPE)
+                                               shell=True)
 
     def disconnect(self):
         if self.option == "localtunnel":
@@ -41,11 +41,11 @@ class Connector:
                 public_url = tunnel.public_url
                 ngrok.disconnect(public_url)
 
-    def get_url(self):
-        if self.option == "localtunnel":
-            for line in iter(self.connection.stdout.readline, ''):
-                print (line.rstrip())
-                break
+    # def get_url(self):
+    #     if self.option == "localtunnel":
+    #         for line in iter(self.connection.stdout.readline, ''):
+    #             print (line.rstrip())
+    #             break
 
 
 class ColabCode:
