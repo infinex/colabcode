@@ -69,7 +69,7 @@ class ColabCode:
                     "You need to pass a list of string(s) e.g. ['ms-python.python']")
         self._install_extensions()
         self._start_server()
-        self.connection.get_url()
+        # self.connection.get_url()
         self._run_code()
 
     def _install_code(self):
