@@ -14,9 +14,10 @@ import sys
 
 
 class Connector:
-    def __init__(self, port,option):
+    def __init__(self, port,option,args):
         self.port = port
         self.option = option
+        self.args = args
         self.connection = None
 
     def connect(self):
@@ -24,7 +25,7 @@ class Connector:
             url = ngrok.connect(port=self.port, options={"bind_tls": True})
             print(f"Code Server can be accessed on: {url}")
         elif self.option == "localtunnel":
-            self.connection = subprocess.Popen(["lt", "--port", str(10000)],
+            self.connection = subprocess.Popen(["lt", "--port", str(10000),f"{self.args}"],
                                                stdout=subprocess.PIPE)
 
     def disconnect(self):
@@ -48,12 +49,12 @@ class Connector:
 
 class ColabCode:
     def __init__(self, port=10000, password=None, mount_drive=False,
-                 option="localtunnel", add_extensions=None,args=''):
+                 option="localtunnel", add_extensions=None,args='',tunnel_args=''):
         self.port = port
         self.args = args
         self._install_localtunnel()
         print(option)
-        self.connection = Connector(self.port, option)
+        self.connection = Connector(self.port, option,args=tunnel_args)
         self.password = password
         self._mount = mount_drive
         self._install_code()
