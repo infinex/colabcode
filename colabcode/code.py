@@ -25,7 +25,8 @@ class Connector:
             url = ngrok.connect(port=self.port, options={"bind_tls": True})
             print(f"Code Server can be accessed on: {url}")
         elif self.option == "localtunnel":
-            self.connection = subprocess.Popen(["lt", "--port", str(10000),f"{self.args}"],
+            self.connection = subprocess.Popen(
+                ["lt", "--port 10000", f"{self.args}"],
                                                stdout=subprocess.PIPE)
 
     def disconnect(self):
