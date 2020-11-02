@@ -26,9 +26,9 @@ class Connector:
             print(f"Code Server can be accessed on: {url}")
         elif self.option == "localtunnel":
             self.connection = subprocess.Popen(
-                ["lt", "--port 10000 ", f"{self.args}"],
-                                        stdout=subprocess.PIPE,
-                                               shell=True)
+                "lt --port 10000 " + f"{self.args}",
+                stdout=subprocess.PIPE,
+                shell=True)
 
     def disconnect(self):
         if self.option == "localtunnel":
