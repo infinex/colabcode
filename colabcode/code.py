@@ -88,6 +88,11 @@ class ColabCode:
     def _install_extensions(self):
         for ext in self.extensions:
             print(f'Install Extension {ext}')
+            if ext.startwith('http'):
+                d = subprocess.call(f'wget {ext}')
+                ext = os.path.basename(d)
+                if d:
+                    continue
             subprocess.run(["code-server", "--install-extension", f"{ext}"])
 
     def _start_server(self):
