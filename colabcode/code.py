@@ -51,7 +51,7 @@ class Connector:
 
 class ColabCode:
     def __init__(self, port=10000, password=None, mount_drive=False,
-                 option="localtunnel", add_extensions=None,args=[],tunnel_args='',code_args=''):
+                 option="localtunnel", add_extensions=None,args='',tunnel_args='',code_args=[]):
         self.port = port
         self.args = args
         self._install_localtunnel()
