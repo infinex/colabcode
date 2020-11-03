@@ -65,7 +65,7 @@ class ColabCode:
             if isinstance(add_extensions, list) and isinstance(
                     add_extensions[0], str):
                 self.extensions += add_extensions
-                add_extensions.reverse()
+                self.extensions.reverse()
             else:
                 raise TypeError(
                     "You need to pass a list of string(s) e.g. ['ms-python.python']")
