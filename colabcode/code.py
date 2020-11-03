@@ -51,7 +51,7 @@ class Connector:
 
 class ColabCode:
     def __init__(self, port=10000, password=None, mount_drive=False,
-                 option="localtunnel", add_extensions=None,args='',tunnel_args=''):
+                 option="localtunnel", add_extensions=None,args='',tunnel_args='',code_args=''):
         self.port = port
         self.args = args
         self._install_localtunnel()
@@ -59,7 +59,7 @@ class ColabCode:
         self.connection = Connector(self.port, option,args=tunnel_args)
         self.password = password
         self._mount = mount_drive
-        self._install_code()
+        self._install_code(code_args)
         self.extensions = EXTENSIONS
         if add_extensions is not None and add_extensions != []:
             if isinstance(add_extensions, list) and isinstance(
@@ -74,12 +74,12 @@ class ColabCode:
         self.connection.get_url()
         self._run_code()
 
-    def _install_code(self):
+    def _install_code(self,args):
         subprocess.run(
             ["wget", "https://code-server.dev/install.sh"],
             stdout=subprocess.PIPE
         )
-        subprocess.run(["sh", "install.sh"], stdout=subprocess.PIPE)
+        subprocess.run(["sh", "install.sh",args], stdout=subprocess.PIPE)
 
     def _install_localtunnel(self):
         subprocess.run(
