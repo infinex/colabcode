@@ -92,6 +92,7 @@ class ColabCode:
                 d = subprocess.call(f'wget {ext}',shell=True)
                 ext = os.path.basename(ext)
                 if d:
+                    print(f'Unable to install {ext}')
                     continue
             subprocess.run(["code-server", "--install-extension", f"{ext}"])
 
