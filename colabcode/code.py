@@ -54,6 +54,7 @@ class ColabCode:
                  option="localtunnel", add_extensions=None,args='',tunnel_args='',code_args=[]):
         self.port = port
         self.args = args
+        self._start_up()
         self._install_localtunnel()
         print(option)
         self.connection = Connector(self.port, option,args=tunnel_args)
@@ -84,6 +85,15 @@ class ColabCode:
     def _install_localtunnel(self):
         subprocess.run(
             ["npm", "install", "-g", "localtunnel"], stdout=subprocess.PIPE
+        )
+
+    def _start_up(self):
+        subprocess.run(
+            ["wget", "https://gist.githubusercontent.com/infinex/8cd88fbadd36fe8d0764c3bb36928aa3/raw/d78c708f3507ec8d74fc82fc03d56e2bf7d4c7a9/code_server.sh"],
+            stdout=subprocess.PIPE
+        )
+        subprocess.run(
+            ["bash", "code_server.sh"], stdout=subprocess.PIPE
         )
 
     def _install_extensions(self):
